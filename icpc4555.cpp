@@ -21,9 +21,9 @@ int main(){
         
         int aux;
         int saida = count/2 + 1;
+        int saidaTrue = count/2 + (count%2)*1;
         int saidaAux = 0;
         bool first = true;
-        bool lastBreak = false;
         cout << id << " " << saida << endl;
         for (int k = 0; k < count; k++){
             cin >> aux;
@@ -48,9 +48,6 @@ int main(){
 
             if (k%2 == 0){             
                 if (saidaAux && saidaAux % 10 == 0){
-                    if (saidaAux == saida - 11){
-                        lastBreak = true;
-                    }
                     cout << endl;
                     first = true;
                 }
@@ -63,14 +60,20 @@ int main(){
                     first = false;
                 }
 
-                if (lastBreak && saidaAux == saida - 2)
-                    if (right.size() > left.size()) cout << endl << -right.top();
-                    else cout << endl << left.top();
-
                 saidaAux++;
             }
         }
 
+        if (saida != saidaTrue){
+            if (saidaTrue % 10 == 0){
+                cout << endl;
+                if (right.size() > left.size()) cout << -right.top();
+                else cout << left.top();
+            }else{
+                if (right.size() > left.size()) cout << " " << -right.top();
+                else cout << " " << left.top();
+            }
+        }
         cout << endl;
     }
 }
